@@ -1,0 +1,2290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monkey Mail</title>
+</head>
+<style>
+  :root {
+    /* ===== Color Variables ===== */
+    --color-primary: #ffe01b;
+    --cta-background-color: #ffe01b;
+    --cta-background-color-disabled: #dbd9d2;
+    --cta-stroke-color: #231e15;
+    --cta-stroke-width: calc(1 * 0.0625rem);
+    --cta-depth-color: #231e15;
+    --cta-text-color: #231e15;
+    --cta-text-size: var(--copy-info-size);
+    --cta-line-height: 1.5;
+    --cta-text-weight: 500;
+    --cta-border-radius: 2em;
+    --link-color: #231e15;
+    --link-color-hovered: #231e15;
+    --link-background-hovered: rgba(255, 224, 27, 0.65);
+    --selection-background-color: rgba(255, 224, 27, 0.15);
+    --color-black: #000;
+    --color-white: #fff;
+
+    /* ===== Background Colors ===== */
+    --bg-light-1: #fef4ea;
+    --bg-light-2: #b7ecec;
+    --bg-light-3: #f6f9fc;
+    --bg-light-4: #f5f5f5;
+    --bg-dark-1: #231e15;
+    --bg-footer: #e7b75f;
+
+    /* ===== Typography ===== */
+    --font-base: "Web", Georgia, Times, "Times New Roman", serif;
+    --font-size-desktop: 18px;
+    --font-size-mobile: 14px;
+    --max-width: calc(88.8889rem*.9);
+    --width-full: 100%;
+    --width-100: 100%;
+
+    /* Font Sizes (Scale) */
+    --font-size-00: 0.625rem;
+    --font-size-01: 0.75rem;
+    --font-size-02: 0.875rem;
+    --font-size-03: 1rem;
+    --font-size-04: 1.25rem;
+    --font-size-05: 1.5rem;
+    --font-size-06: 1.75rem;
+    --font-size-07: 2rem;
+    --font-size-08: 2.125rem;
+    --font-size-09: 2.5rem;
+    --font-size-10: 3rem;
+    --font-size-11: 3.75rem;
+    --font-size-12: 4.5rem;
+    --font-size-13: 5.25rem;
+    --font-size-14: 6rem;
+    --font-size-15: 6.75rem;
+    --font-size-16: 7.5rem;
+    --font-size-17: 8.25rem;
+    --font-size-rw-video-link-font-size: 0.8rem;
+    --font-size-18: 18px;
+    --font-size-19: 19px;
+    --font-size-24: 24px;
+    --font-size-2rem: 2rem;
+    --font-size-1rem: 1rem;
+
+    /* Font Weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-demi: 600;
+    --font-weight-bold: 700;
+    --font-weight-heavy: 800;
+
+    /* Line Heights */
+    --lineheight-body: 1.5;
+    --lineheight-heading: 1.3;
+    --font-lineheight-heading-01: 1.4;
+    --font-lineheight-body-01: 1.42857143;
+    --font-lineheight-heading-02: 1.28571429;
+    --font-lineheight-rw-video-link: 1.36625rem;
+    --font-lineheight-size-01: 1rem;
+    --font-lineheight-size-02: 1.25rem;
+    --font-lineheight-size-03: 1.5rem;
+    --font-lineheight-size-04: 1.75rem;
+    --font-lineheight-size-05: 2rem;
+    --font-lineheight-size-06: 2.25rem;
+    --font-lineheight-size-07: 2.75rem;
+    --font-lineheight-size-08: 3.25rem;
+    --font-lineheight-size-09: 3.75rem;
+    --font-lineheight-size-10: 4.75rem;
+    --font-lineheight-size-11: 5.75rem;
+    --font-lineheight-size-12: 6.75rem;
+    --font-lineheight-size-13: 6.75rem;
+    --font-lineheight-size-14: 7.25rem;
+    --font-lineheight-size-15: 8rem;
+    --font-lineheight-size-16: 8.75rem;
+
+    /* ===== CTA Styles ===== */
+    --cta-bg: #ffe01b;
+    --cta-bg-disabled: #dbd9d2;
+    --cta-stroke: #231e15;
+    --cta-stroke-width: 1px;
+    --cta-text-color: #231e15;
+    --cta-line-height: 1.5;
+    --cta-font-weight: 500;
+    --cta-border-radius: 2em;
+
+    /* ===== Spacing ===== */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2.5rem;
+    --spacing-xl: 3.75rem;
+    --spacing-xxl: 5rem;
+    --spacing-xxxsmall: 0.25rem;
+    --spacing-xxsmall: 0.5rem;
+    --spacing-xsmall: 1rem;
+    --spacing-small: 1.25rem;
+    --spacing-large: 2.5rem;
+    --spacing-xlarge: 3.75rem;
+    --spacing-x-minilarge: 4rem;
+    --spacing-xxlarge: 5rem;
+    --spacing-xxxlarge: 7.5rem;
+    --spacing-rw-small-button-height: 3rem;
+    --spacing-rw-medium-button-height: 3.25rem;
+    --spacing-rw-large-button-height: 3.5rem;
+    --spacing-rw-small-button-padding: 1.25rem;
+    --spacing-rw-medium-button-padding: 1.75rem;
+    --spacing-rw-large-button-padding: 2.25rem;
+    --spacing-rw-sec-nav-sticky-height-mobile: 8.375rem;
+    --spacing-rw-sec-nav-sticky-height-desktop: 5rem;
+    --spacing-10: 10px;
+    --spacing-20: 20px;
+    --spacing-40: 40px;
+    --spacing-60: 60px;
+    --spacing-80: 80px;
+    --spacing--neg-80: -80px;
+    --spacing-header-height: 5.25rem;
+    --spacing-announcement-height: 70px;
+    --spacing-hero-min-height: 430px;
+    --spacing-card-image-height: 275px;
+    --spacing-card-min-width: 280px;
+    --spacing-card-min-width-260: 260px;
+    --spacing-rl: 0.875rem;
+
+    /* ===== Border Radius ===== */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-pill: 624.9375rem;
+    --radius-rounded: 50%;
+    --radius-jumbo: 1.75em;
+    --radius-standard: 1.2em;
+    --border-radius-small: 0.25rem;
+    --border-radius-medium: 0.5rem;
+    --border-radius-pill: 624.9375rem;
+    --border-radius-rounded: 50%;
+    --border-radius-rw-jumbo: 1.75em;
+    --border-radius-rw-standard: 1.2em;
+    --border-radius-rw-mini: 0.8em;
+    --border-radius-rw-banner: 0.5rem;
+    --border-radius-rw-testimonial: 1.25rem;
+    --radius-small: 0.75rem;
+
+    /* ===== Border Width ===== */
+    --border-width-rw-tertiary: 0.125rem;
+    --border-standard: 0.125rem solid var(--color-dark);
+    --border-hr: 1px solid var(--color-grey-05);
+
+    /* ===== Grid Columns (12-col layout) ===== */
+    --grid-column-01: 8.333%;
+    --grid-column-02: 16.667%;
+    --grid-column-03: 25%;
+    --grid-column-04: 33.333%;
+    --grid-column-05: 41.667%;
+    --grid-column-06: 50%;
+    --grid-column-07: 58.333%;
+    --grid-column-08: 66.667%;
+    --grid-column-09: 75%;
+    --grid-column-10: 83.333%;
+    --grid-column-11: 91.667%;
+    --grid-column-12: 100%;
+    --grid-col-footer: 2fr 5fr 1fr;
+    --grid-col-foter-1: repeat(4, 1fr);
+    --grid-gutter: 1.25rem;
+    --grid-margin-small: 1rem;
+    --grid-margin-base: 1.25rem;
+    --margin-auto: 0 auto;
+    --grid-55: 55%;
+    --grid-45: 45%;
+    --grid-80: 80%;
+    --grid-full: repeat(2, var(--grid-column-06));
+
+    /* ===== Elevation / Shadows ===== */
+    --elevation-low: 0 1px 4px rgba(0, 0, 0, 0.1);
+    --elevation-mid: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --elevation-high: 0 4px 16px rgba(0, 0, 0, 0.2);
+    --elevation-skim: 0 0.0625rem 0.25rem 0 rgba(0, 0, 0, 0.2);
+    --elevation-lifted: 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+    --elevation-raised: 0 0.25rem 1rem 0 rgba(0, 0, 0, 0.2);
+    --elevation-floating: 0 0.375rem 1.5rem 0 rgba(0, 0, 0, 0.2);
+    --elevation-product-finder-item: 0 0.125rem 0.125rem rgba(13, 51, 63, 0.1);
+    --elevation-product-finder-card: 0.5rem 0 1.25rem rgba(13, 51, 63, 0.15);
+    --elevation-clickable-tooltip: 0 1.25rem 1.875rem rgba(0, 0, 0, 0.1);
+    --elevation-pricing-card: 0 4px 12px 0 #241c151f;
+    --global-nav-box-shadow: 0 2px 4px rgba(33, 51, 67, 0.12);
+
+    /* ===== Z-index ===== */
+    --zindex-dropdown: 1000;
+    --zindex-sticky: 1100;
+    --zindex-fixed: 1200;
+    --zindex-overlay: 1300;
+    --zindex-overlay-closer: 1305;
+    --zindex-modal: 1400;
+    --zindex-tooltip: 1500;
+    --zindex-rw-hero-left: 1;
+    --zindex-rw-hero-right: 0;
+    --zindex-page-content: 100;
+    --zindex-gbl-header-overlay: 1001;
+    --zindex-rw-sub-layer: -1;
+    --zindex-hero-overlay: 1;
+    --zindex-hero-content: 2;
+
+    /* ===== Easing Curves ===== */
+    --ease-slow: cubic-bezier(0.35, 0, 0.5, 1);
+    --ease-fast: cubic-bezier(0.35, 0, 0.25, 1);
+    --easing-slow: cubic-bezier(0.35, 0, 0.5, 1);
+    --easing-quick: cubic-bezier(0.35, 0, 0.25, 1);
+    --easing-exit: cubic-bezier(0.35, 0, 0.8, 1);
+    --easing-entrance: cubic-bezier(0, 0, 0.1, 1);
+    --easing-spirited: cubic-bezier(0.35, 1.35, 0.3, 1);
+    --easing-spirited-entrance: cubic-bezier(0.15, 1.3, 0.3, 1);
+    --easing-spirited-exit: cubic-bezier(0.7, -0.1, 0.6, 1);
+
+    /* ===== Opacity Values ===== */
+    --opacity-70: 0.7;
+    --opacity-30: 0.3;
+    --opacity-transparent: 0;
+
+    /* ===== Button Dimensions ===== */
+    --button-height-standard: 3.25rem;
+    --button-height-large: 3.5rem;
+    --button-padding-horizontal: 0.75rem;
+    --button-padding-large: 1.5rem;
+    --button-width-140: 140px;
+
+    /* ===== Image Dimensions ===== */
+    --image-max-width-248: 248px;
+    --image-width-560: 560px;
+    --image-width-fit: fit-content;
+
+    /* ===== Text Alignment ===== */
+    --text-align: center;
+  }
+
+  /* ===== Reset and Body Base ===== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-base);
+    font-size: var(--font-size-desktop);
+    background: var(--color-white);
+    color: var(--link-color);
+  }
+
+  body,
+  html {
+    height: 100%;
+    width: 100%;
+  }
+
+  .btn-secondary {
+    background: var(--cta-background-color);
+    border: var(--cta-stroke-width) solid var(--cta-stroke-color);
+    color: var(--cta-text-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--cta-border-radius);
+    font-size: var(--font-size-03);
+    font-weight: var(--cta-font-weight);
+    cursor: pointer;
+    transition: all 0.2s var(--ease-fast);
+  }
+
+  @media (max-width: 1024px) {
+    .desktop {
+      display: none !important;
+    }
+
+    .section-2 .grid-container {
+      grid-template-columns: var(--grid-full) !important;
+    }
+
+    .section-3 .grid-container {
+      grid-template-columns: var(--grid-full) !important;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .mobile {
+      display: none !important;
+    }
+  }
+
+  @media (max-width:880px) {
+    section.section-6 .price-card {
+      width: var(--width-full) !important;
+    }
+
+    .features-list {
+      max-width: var(--width-full) !important;
+    }
+
+    .integrations {
+      grid-template-columns: var(--grid-full) !important;
+    }
+
+    .important-links {
+      grid-template-columns: repeat(3, 2fr) !important;
+      gap: var(--spacing-lg) !important;
+    }
+
+    .section-4 .container {
+      grid-template-columns: repeat(1, 1fr) !important;
+      gap: var(--spacing-lg) !important;
+    }
+
+    .app-icon {
+      max-width: var(--width-full) !important;
+    }
+  }
+
+  @media (max-width:660px) {
+    :root {
+      --grid-full: var(--grid-full);
+      --wrap: wrap;
+    }
+
+    .section-2 .grid-container {
+      grid-template-columns: repeat(1, var(--grid-column-12)) !important;
+    }
+
+    .section-3 .grid-container {
+      grid-template-columns: repeat(1, var(--grid-column-12)) !important;
+    }
+
+    .benifits {
+      grid-template-columns: repeat(1, var(--grid-column-12)) !important;
+    }
+
+    .app-icon {
+      grid-template-columns: repeat(1, 1fr) !important;
+    }
+
+    .section-4 .container {
+      padding: 0 !important;
+    }
+
+    .related-links {
+      gap: var(--spacing-md) !important;
+      grid-template-columns: repeat(1, 1fr) !important;
+    }
+
+    .important-links {
+      grid-template-columns: repeat(1, 2fr) !important;
+      gap: var(--spacing-lg) !important;
+    }
+
+    .integrations>div {
+      padding: var(--spacing-md) !important;
+    }
+  }
+</style>
+
+<body>
+  <!-- Top Navigation -->
+  <div class="logos" style="
+        border-bottom: var(--border-light);
+        max-width: var(--breakpoints-xlarge);
+        padding: var(--spacing-xxsmall) var(--spacing-md);
+      ">
+    <div style="
+          display: flex;
+          align-items: flex-end;
+          justify-content: left;
+          gap: var(--spacing-small);
+        ">
+      <div style="
+            font-weight: var(--font-weight-heavy);
+            font-size: var(--font-size-04);
+          ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="12" fill="none" viewBox="0 0 61 12"
+          data-testid="rw-intuit-icon">
+          <g clip-path="url(#bl_i_a)">
+            <mask id="bl_i_b" width="61" height="12" x="0" y="0" maskUnits="userSpaceOnUse"
+              style="mask-type: luminance">
+              <path fill="#fff" d="M60.286 0h-60v12h60V0Z"></path>
+            </mask>
+            <g mask="url(#bl_i_b)">
+              <path fill="#5C5F65"
+                d="M31.038 6.887c0 2.896 2.43 5.013 5.517 5.013 3.089 0 5.523-2.117 5.523-5.013V.234h-2.99v6.31c0 1.562-1.095 2.616-2.542 2.616-1.447 0-2.541-1.05-2.541-2.616V.234h-2.99l.018 6.653h.005Zm19.025-3.991h3.566v8.789h2.99V2.896h3.566V.229H50.063v2.667ZM48.129.229h-2.99v11.456h2.99V.229ZM18.96 2.896h3.565v8.789h2.99V2.896h3.567V.229H18.958v2.667ZM3.275.229H.286v11.456h2.99V.229Zm14.11 4.784C17.387 2.117 14.953 0 11.865 0S6.346 2.117 6.346 5.013v6.672h2.99V5.371c0-1.563 1.095-2.617 2.542-2.617 1.447 0 2.54 1.05 2.54 2.617v6.31h2.992l-.019-6.673-.004.005Z">
+              </path>
+            </g>
+          </g>
+          <defs>
+            <clipPath id="bl_i_a">
+              <path fill="#fff" d="M.286 0h60v12h-60z"></path>
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <nav>
+        <div class="links" style="
+              display: flex;
+              align-items: flex-end;
+              justify-content: left;
+              gap: var(--spacing-small);
+            ">
+          <a>
+            <svg width="75" height="16" viewBox="0 0 114 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+              data-testid="rw-turbo-tax-icon">
+              <path
+                d="M12.0139 24.0281C18.6491 24.0281 24.0281 18.6491 24.0281 12.014C24.0281 5.37886 18.6491 0 12.0139 0C5.37873 0 0 5.37886 0 12.014C0 18.6491 5.37873 24.0281 12.0139 24.0281Z"
+                fill="#ADBAC2"></path>
+              <path
+                d="M9.34947 16.3951C7.94601 15.3994 6.62792 14.3374 5.35728 13.1996C4.89283 14.1952 4.49465 15.2572 4.09619 16.3287C6.09692 18.0544 8.81846 19.9887 10.6864 21.1172C13.0757 14.9348 16.8121 10.8669 20.3963 8.01274C19.9316 7.0171 19.3343 6.14473 18.5281 5.42407C14.7353 8.34463 11.6063 12.0711 9.34947 16.3951Z"
+                fill="white"></path>
+              <path
+                d="M26.9766 12.5352V10.3733H28.8725V7.23462H31.5376V10.3733H34.2496V12.5352H31.5376V17.5703C31.5376 18.5469 31.7656 19.2391 32.9591 19.2391C33.3196 19.2391 33.8032 19.1633 34.1078 19.0116L34.203 21.1355C33.7284 21.3158 32.9984 21.4295 32.4005 21.4295C29.5282 21.4295 28.8725 19.6659 28.8725 17.5987V12.5447H26.9766V12.5352Z"
+                fill="#5D686F"></path>
+              <path
+                d="M45.6188 21.2019H43.0489V19.4572H43.0116C42.537 20.5476 41.2484 21.5054 39.6458 21.5054C36.8294 21.5054 35.6436 19.3434 35.6436 17.1245V10.3447H38.346V16.3565C38.346 17.6366 38.6411 19.2486 40.3762 19.2486C42.1113 19.2486 42.9068 17.7598 42.9068 16.3186V10.3637H45.6188V21.2019Z"
+                fill="#5D686F"></path>
+              <path
+                d="M50.9471 10.3641V12.1658H50.9861C51.5747 10.9236 52.7308 10.0417 54.1427 10.0417C54.3519 10.0417 54.617 10.0607 54.7983 10.1176V12.602C54.4378 12.5071 54.2098 12.4882 53.954 12.4882C51.5166 12.4882 51.0423 14.6122 51.0423 15.3992V21.2025H48.3303V10.3641H50.9376H50.9471Z"
+                fill="#5D686F"></path>
+              <path
+                d="M58.8753 4.13403V11.7388H58.95C59.5105 11.0371 60.6011 10.051 62.592 10.051C65.6831 10.051 67.8554 12.5353 67.8554 15.7403C67.8554 18.9452 65.8249 21.5245 62.5249 21.5245C61.0083 21.5245 59.5383 20.8228 58.8082 19.5901H58.7708V21.2209H56.2009V4.13403H58.8846H58.8753ZM61.9757 12.2603C59.9847 12.2603 58.7894 14.0904 58.7894 15.7782C58.7894 17.466 59.994 19.2583 61.9757 19.2583C64.0806 19.2583 65.0948 17.4376 65.0948 15.7403C65.0948 14.043 64.0806 12.2603 61.9757 12.2603Z"
+                fill="#5D686F"></path>
+              <path
+                d="M75.2513 10.0513C78.5221 10.0513 81.1485 12.327 81.1485 15.7406C81.1485 19.1543 78.5221 21.5249 75.2513 21.5249C71.9791 21.5249 69.353 19.1543 69.353 15.7406C69.353 12.327 71.9698 10.0513 75.2513 10.0513ZM75.2513 19.2585C77.393 19.2585 78.3885 17.4379 78.3885 15.7406C78.3885 14.0433 77.393 12.2606 75.2513 12.2606C73.1071 12.2606 72.1117 14.0433 72.1117 15.7406C72.1117 17.4379 73.1071 19.2585 75.2513 19.2585Z"
+                fill="#5D686F"></path>
+              <path
+                d="M81.7842 12.5352V10.3733H83.6796V7.23462H86.3442V10.3733H89.0578V12.5352H86.3442V17.5703C86.3442 18.5469 86.5733 19.2391 87.7678 19.2391C88.1278 19.2391 88.6105 19.1633 88.916 19.0116L89.0087 21.1355C88.5369 21.3158 87.806 21.4295 87.2087 21.4295C84.3369 21.4295 83.6796 19.6659 83.6796 17.5987V12.5447H81.7842V12.5352Z"
+                fill="#5D686F"></path>
+              <path
+                d="M97.5156 19.8179H97.4393C96.8993 20.7757 95.6202 21.4679 94.0738 21.4679C92.3284 21.4679 90.0156 20.6334 90.0156 18.1017C90.0156 14.8682 94.0738 14.4226 97.4693 14.4226V14.157C97.4693 12.82 96.3402 12.1658 94.9847 12.1658C93.8365 12.1658 92.7293 12.7063 92.0338 13.4079L90.632 11.758C91.8565 10.6296 93.5611 10.0417 95.2111 10.0417C99.0974 10.0417 100.038 12.4313 100.038 14.6027V21.193H97.5047V19.8179H97.5156ZM97.4774 16.2621H96.8693C95.1538 16.2621 92.7374 16.4707 92.7374 18.0638C92.7374 19.0974 93.7138 19.4197 94.6329 19.4197C96.4902 19.4197 97.4856 18.3671 97.4856 16.6414V16.2621H97.4774Z"
+                fill="#5D686F"></path>
+              <path
+                d="M105.681 15.4466L101.773 10.3735H105.024L107.377 13.7397L109.794 10.3735H112.916L109.027 15.4466L113.456 21.2022H110.165L107.347 17.2577L104.495 21.2022H101.29L105.689 15.4466H105.681Z"
+                fill="#5D686F"></path>
+            </svg>
+          </a>
+          <a>
+            <svg width="75" height="16" viewBox="0 0 114 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+              data-testid="rw-turbo-tax-icon">
+              <path
+                d="M12.0139 24.0281C18.6491 24.0281 24.0281 18.6491 24.0281 12.014C24.0281 5.37886 18.6491 0 12.0139 0C5.37873 0 0 5.37886 0 12.014C0 18.6491 5.37873 24.0281 12.0139 24.0281Z"
+                fill="#ADBAC2"></path>
+              <path
+                d="M9.34947 16.3951C7.94601 15.3994 6.62792 14.3374 5.35728 13.1996C4.89283 14.1952 4.49465 15.2572 4.09619 16.3287C6.09692 18.0544 8.81846 19.9887 10.6864 21.1172C13.0757 14.9348 16.8121 10.8669 20.3963 8.01274C19.9316 7.0171 19.3343 6.14473 18.5281 5.42407C14.7353 8.34463 11.6063 12.0711 9.34947 16.3951Z"
+                fill="white"></path>
+              <path
+                d="M26.9766 12.5352V10.3733H28.8725V7.23462H31.5376V10.3733H34.2496V12.5352H31.5376V17.5703C31.5376 18.5469 31.7656 19.2391 32.9591 19.2391C33.3196 19.2391 33.8032 19.1633 34.1078 19.0116L34.203 21.1355C33.7284 21.3158 32.9984 21.4295 32.4005 21.4295C29.5282 21.4295 28.8725 19.6659 28.8725 17.5987V12.5447H26.9766V12.5352Z"
+                fill="#5D686F"></path>
+              <path
+                d="M45.6188 21.2019H43.0489V19.4572H43.0116C42.537 20.5476 41.2484 21.5054 39.6458 21.5054C36.8294 21.5054 35.6436 19.3434 35.6436 17.1245V10.3447H38.346V16.3565C38.346 17.6366 38.6411 19.2486 40.3762 19.2486C42.1113 19.2486 42.9068 17.7598 42.9068 16.3186V10.3637H45.6188V21.2019Z"
+                fill="#5D686F"></path>
+              <path
+                d="M50.9471 10.3641V12.1658H50.9861C51.5747 10.9236 52.7308 10.0417 54.1427 10.0417C54.3519 10.0417 54.617 10.0607 54.7983 10.1176V12.602C54.4378 12.5071 54.2098 12.4882 53.954 12.4882C51.5166 12.4882 51.0423 14.6122 51.0423 15.3992V21.2025H48.3303V10.3641H50.9376H50.9471Z"
+                fill="#5D686F"></path>
+              <path
+                d="M58.8753 4.13403V11.7388H58.95C59.5105 11.0371 60.6011 10.051 62.592 10.051C65.6831 10.051 67.8554 12.5353 67.8554 15.7403C67.8554 18.9452 65.8249 21.5245 62.5249 21.5245C61.0083 21.5245 59.5383 20.8228 58.8082 19.5901H58.7708V21.2209H56.2009V4.13403H58.8846H58.8753ZM61.9757 12.2603C59.9847 12.2603 58.7894 14.0904 58.7894 15.7782C58.7894 17.466 59.994 19.2583 61.9757 19.2583C64.0806 19.2583 65.0948 17.4376 65.0948 15.7403C65.0948 14.043 64.0806 12.2603 61.9757 12.2603Z"
+                fill="#5D686F"></path>
+              <path
+                d="M75.2513 10.0513C78.5221 10.0513 81.1485 12.327 81.1485 15.7406C81.1485 19.1543 78.5221 21.5249 75.2513 21.5249C71.9791 21.5249 69.353 19.1543 69.353 15.7406C69.353 12.327 71.9698 10.0513 75.2513 10.0513ZM75.2513 19.2585C77.393 19.2585 78.3885 17.4379 78.3885 15.7406C78.3885 14.0433 77.393 12.2606 75.2513 12.2606C73.1071 12.2606 72.1117 14.0433 72.1117 15.7406C72.1117 17.4379 73.1071 19.2585 75.2513 19.2585Z"
+                fill="#5D686F"></path>
+              <path
+                d="M81.7842 12.5352V10.3733H83.6796V7.23462H86.3442V10.3733H89.0578V12.5352H86.3442V17.5703C86.3442 18.5469 86.5733 19.2391 87.7678 19.2391C88.1278 19.2391 88.6105 19.1633 88.916 19.0116L89.0087 21.1355C88.5369 21.3158 87.806 21.4295 87.2087 21.4295C84.3369 21.4295 83.6796 19.6659 83.6796 17.5987V12.5447H81.7842V12.5352Z"
+                fill="#5D686F"></path>
+              <path
+                d="M97.5156 19.8179H97.4393C96.8993 20.7757 95.6202 21.4679 94.0738 21.4679C92.3284 21.4679 90.0156 20.6334 90.0156 18.1017C90.0156 14.8682 94.0738 14.4226 97.4693 14.4226V14.157C97.4693 12.82 96.3402 12.1658 94.9847 12.1658C93.8365 12.1658 92.7293 12.7063 92.0338 13.4079L90.632 11.758C91.8565 10.6296 93.5611 10.0417 95.2111 10.0417C99.0974 10.0417 100.038 12.4313 100.038 14.6027V21.193H97.5047V19.8179H97.5156ZM97.4774 16.2621H96.8693C95.1538 16.2621 92.7374 16.4707 92.7374 18.0638C92.7374 19.0974 93.7138 19.4197 94.6329 19.4197C96.4902 19.4197 97.4856 18.3671 97.4856 16.6414V16.2621H97.4774Z"
+                fill="#5D686F"></path>
+              <path
+                d="M105.681 15.4466L101.773 10.3735H105.024L107.377 13.7397L109.794 10.3735H112.916L109.027 15.4466L113.456 21.2022H110.165L107.347 17.2577L104.495 21.2022H101.29L105.689 15.4466H105.681Z"
+                fill="#5D686F"></path>
+            </svg>
+          </a>
+        </div>
+        <!-- Repeat similar SVG links for other navigation items -->
+      </nav>
+    </div>
+  </div>
+
+  <!-- Promotional Banner -->
+  <div style="
+        background-color: var(--bg-dark-1);
+        color: var(--color-white);
+        text-align: center;
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-02);
+        font-weight: var(--font-weight-normal);
+        line-height: var(--font-lineheight-size-02);
+      ">
+    Save 50% for 12 months <br />
+    <span style="margin-left: var(--spacing-xs)">- limited time offer. Get started today.</span>
+  </div>
+
+  <!-- Main Header -->
+  <header style="
+        background-color: var(--color-white);
+        padding: var(--spacing-md);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      ">
+    <div class="desktop" style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          max-width: var(--width-full);
+          margin: 0 auto;
+        ">
+      <!-- Logo and Brand -->
+      <div style="display: flex; align-items: center; gap: var(--spacing-lg)">
+        <div style="
+              display: flex;
+              align-items: center;
+              gap: var(--spacing-sm);
+              font-weight: var(--font-weight-bold);
+              font-size: var(--font-size-04);
+              color: var(--link-color);
+            ">
+          🐵 <span>MonkeyMail</span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav style="
+              display: flex;
+              align-items: center;
+              gap: var(--spacing-sm);
+              font-size: var(--font-size-02);
+            ">
+          <div style="
+                position: relative;
+                cursor: pointer;
+                color: var(--link-color);
+                font-weight: var(--font-weight-medium);
+                padding: var(--spacing-sm);
+              ">
+            Solutions and Services ▼
+          </div>
+          <div style="
+                position: relative;
+                cursor: pointer;
+                color: var(--link-color);
+                font-weight: var(--font-weight-medium);
+                padding: var(--spacing-sm);
+              ">
+            Integrations ▼
+          </div>
+          <div style="
+                position: relative;
+                cursor: pointer;
+                color: var(--link-color);
+                font-weight: var(--font-weight-medium);
+                padding: var(--spacing-sm);
+              ">
+            Resources ▼
+          </div>
+          <div style="
+                cursor: pointer;
+                color: var(--link-color);
+                font-weight: var(--font-weight-medium);
+                padding: var(--spacing-sm);
+              ">
+            Switch to MonkeyMail
+          </div>
+          <div style="
+                cursor: pointer;
+                color: var(--link-color);
+                font-weight: var(--font-weight-medium);
+                padding: var(--spacing-sm);
+              ">
+            Pricing
+          </div>
+        </nav>
+      </div>
+
+      <!-- Right Side Actions -->
+      <div style="display: flex; align-items: center; gap: var(--spacing-md)">
+        <!-- Search Icon -->
+        <div style="
+              cursor: pointer;
+              padding: var(--spacing-sm);
+              color: var(--link-color);
+            ">
+          <img width="18" height="18" src="https://mailchimp.com/release/plums/e6be877d514f67f5.svg" alt="">
+        </div>
+
+        <!-- Language/Region -->
+        <div style="
+              display: flex;
+              align-items: center;
+              gap: var(--spacing-xs);
+              cursor: pointer;
+              color: var(--link-color);
+              font-size: var(--font-size-02);
+            ">
+          <img width="18" height="18" src="https://mailchimp.com/release/plums/1082d07df5a13d7d.svg" alt=""> EN ▼
+        </div>
+
+        <!-- Sales Info -->
+        <div style="font-size: var(--font-size-02); color: var(--link-color)">
+          Sales: +1 (855) 550-7583
+        </div>
+
+        <!-- Log In Button -->
+        <button style="
+              background: transparent;
+              border: var(--cta-stroke-width) solid var(--cta-stroke-color);
+              color: var(--cta-text-color);
+              padding: var(--spacing-sm) var(--spacing-md);
+              border-radius: var(--cta-border-radius);
+              font-size: var(--font-size-03);
+              font-weight: var(--cta-font-weight);
+              cursor: pointer;
+              transition: all 0.2s var(--ease-fast);
+            ">
+          Log In
+        </button>
+
+        <!-- Sign Up Button -->
+        <button class="btn-secondary">Sign Up</button>
+      </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div class="mobile" style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: row;
+        ">
+      <div class="logo" style="
+            margin-right: var(--spacing-xlarge);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-24);
+            color: var(--color-black);
+          ">
+        🐵 <span>MonkeyMail</span>
+      </div>
+      <div style="gap: var(--spacing-20); display: flex; align-items: center">
+        <img style="max-width: 25px" src="https://cdn-icons-png.flaticon.com/128/7710/7710488.png" alt="Menu icon" />
+      </div>
+    </div>
+  </header>
+
+  <section class="section-1" style="text-align: center">
+    <div class="container" style="padding: var(--spacing-xxl) var(--spacing-sm)">
+      <h1 style="
+            font-size: var(--font-size-10);
+            font-weight: var(--font-weight-demi);
+            color: var(--link-color);
+            margin-bottom: var(--spacing-md);
+            line-height: var(--lineheight-heading);
+          ">
+        Turn Emails into Revenue
+      </h1>
+      <p style="
+            font-size: var(--font-size-05);
+            color: var(--link-color);
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: var(--lineheight-body);
+            margin-bottom: var(--spacing-lg);
+          ">
+        Win new customers with the #1 email marketing and automations
+        platform* that recommends ways to get more opens, clicks, and sales.
+      </p>
+      <button class="btn-secondary">Sign Up</button>
+    </div>
+  </section>
+
+  <section class="section-2" style="text-align: center">
+    <div class="container">
+      <div class="grid-container" style="
+            display: grid;
+            grid-template-columns: repeat(4, var(--grid-column-03));
+            max-width: var(--width-full);
+            margin: 0 auto;
+          ">
+        <div class="grid-item" style="text-align: left; position: relative">
+          <a href="">
+            <h3 class="feature-title" style="
+                  font-size: var(--font-size-06);
+                  font-weight: var(--font-weight-medium);
+                  color: var(--link-color);
+                  position: absolute;
+                  word-wrap: break-word;
+                  padding: var(--spacing-lg);
+                ">
+              Convert with email automations
+            </h3>
+          </a>
+          <img width="100%" height="100%
+                    "
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/5EODYdgDf1houB82RfR8e0/d3a56636ba2d48943ab54513277458bc/Homepage-Feature-Card-Automations-Desktop-INT__1_.png?w=630&fm=avif&q=60"
+            alt="" />
+        </div>
+        <div class="grid-item" style="text-align: left; position: relative">
+          <a href="">
+            <h3 class="feature-title" style="
+                  font-size: var(--font-size-06);
+                  font-weight: var(--font-weight-medium);
+                  color: var(--link-color);
+                  position: absolute;
+                  word-wrap: break-word;
+                  padding: var(--spacing-lg);
+                ">
+              Create faster with generative AI
+            </h3>
+          </a>
+          <img width="100%" height="100%
+                    "
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/3JSoRinRB2VTmBiD7NyEUg/f48b012abacf15bc323135c3d9e3cbe2/Homepage-Feature-Card-AI-Desktop.png?w=630&fm=avif&q=60"
+            alt="" />
+        </div>
+        <div class="grid-item" style="text-align: left; position: relative">
+          <a href="">
+            <h3 class="feature-title" style="
+                  font-size: var(--font-size-06);
+                  font-weight: var(--font-weight-medium);
+                  color: var(--link-color);
+                  position: absolute;
+                  word-wrap: break-word;
+                  padding: var(--spacing-lg);
+                ">
+              Refine with segmentation
+            </h3>
+          </a>
+          <img width="100%" height="100%
+                    "
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/6QVNtP8As7OHsx5mivPn8f/c802814a27e36ee4a016556501e6ec85/Homepage-Feature-Card-Segmentation-Desktop.png?w=630&fm=avif&q=60"
+            alt="" />
+        </div>
+        <div class="grid-item" style="text-align: left; position: relative">
+          <a href="">
+            <h3 class="feature-title" style="
+                  font-size: var(--font-size-06);
+                  font-weight: var(--font-weight-medium);
+                  color: var(--link-color);
+                  position: absolute;
+                  word-wrap: break-word;
+                  padding: var(--spacing-lg);
+                ">
+              Optimize with analytics & reporting
+            </h3>
+          </a>
+          <img width="100%" height="100%
+                    "
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/6JxWAec8e3X3OMFmX9dVvd/9f34fab9dcbe5d69c4faf2c0d1b9b5ae/Homepage-Feature-Card-Analytics-Reporting-Desktop.png?w=630&fm=avif&q=60"
+            alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-3" style="text-align: center; background: var(--bg-light-3)">
+    <div class="container">
+      <div class="grid-container" style="
+            display: grid;
+            grid-template-columns: repeat(4, var(--grid-column-03));
+            max-width: var(--width-full);
+            margin: 0 auto;
+          ">
+        <div class="grid-item" style="
+              background-color: #d79637;
+              padding: var(--spacing-lg);
+              text-align: left;
+            ">
+          <div style="
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-rw-small-button-padding);
+                justify-content: space-between;
+                height: 100%;
+                align-items:flex-start;
+              ">
+            <p style="
+                  font-size: var(--font-size-03);
+                  color: var(--link-color);
+                  line-height: var(--lineheight-body);
+                ">
+              Boost orders and customer lifetime value by dynamically
+              personalizing emails based on browsing and purchase data.
+            </p>
+            <button style="
+                  background: transparent;
+                  border: var(--cta-stroke-width) solid var(--cta-stroke-color);
+                  color: var(--cta-text-color);
+                  padding: var(--spacing-sm) var(--spacing-md);
+                  border-radius: var(--cta-border-radius);
+                  font-size: var(--font-size-03);
+                  font-weight: var(--cta-font-weight);
+                  cursor: pointer;
+                  transition: all 0.2s var(--ease-fast);
+                ">
+              Explore marketing automation
+            </button>
+          </div>
+        </div>
+        <div class="grid-item" style="padding: var(--spacing-lg); text-align: left">
+          <div style="
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-rw-small-button-padding);
+                justify-content: space-between;
+                height: 100%;
+                align-items:flex-start;
+              ">
+            <p style="
+                  font-size: var(--font-size-03);
+                  color: var(--link-color);
+                  line-height: var(--lineheight-body);
+                ">
+              Effortlessly create on-brand content with generative AI tools
+              and choose from expertly designed templates.
+            </p>
+            <button style="
+                  background: transparent;
+                  border: var(--cta-stroke-width) solid var(--cta-stroke-color);
+                  color: var(--cta-text-color);
+                  padding: var(--spacing-sm) var(--spacing-md);
+                  border-radius: var(--cta-border-radius);
+                  font-size: var(--font-size-03);
+                  font-weight: var(--cta-font-weight);
+                  cursor: pointer;
+                  transition: all 0.2s var(--ease-fast);
+                ">
+              Explore AI tools
+            </button>
+          </div>
+        </div>
+        <div class="grid-item" style="
+              padding: var(--spacing-lg);
+              background-color: #d79637;
+              text-align: left;
+            ">
+          <div style="
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-rw-small-button-padding);
+                justify-content: space-between;
+                height: 100%;
+                align-items:flex-start;
+              ">
+            <p style="
+                  font-size: var(--font-size-03);
+                  color: var(--link-color);
+                  line-height: var(--lineheight-body);
+                ">
+              Target customers with advanced logic like spend amounts, buying
+              behavior, and predicted attributes.
+            </p>
+            <button style="
+                  background: transparent;
+                  border: var(--cta-stroke-width) solid var(--cta-stroke-color);
+                  color: var(--cta-text-color);
+                  padding: var(--spacing-sm) var(--spacing-md);
+                  border-radius: var(--cta-border-radius);
+                  font-size: var(--font-size-03);
+                  font-weight: var(--cta-font-weight);
+                  cursor: pointer;
+                  transition: all 0.2s var(--ease-fast);
+                ">
+              Explore audience management
+            </button>
+          </div>
+        </div>
+        <div class="grid-item" style="padding: var(--spacing-lg); text-align: left">
+          <div style="
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-rw-small-button-padding);
+                justify-content: space-between;
+                height: 100%;
+                align-items:flex-start;
+              ">
+            <p style="
+                  font-size: var(--font-size-03);
+                  color: var(--link-color);
+                  line-height: var(--lineheight-body);
+                ">
+              Analyze performance with custom reports, funnel visualizations,
+              and industry benchmarking.
+            </p>
+            <button style="
+                  background: transparent;
+                  border: var(--cta-stroke-width) solid var(--cta-stroke-color);
+                  color: var(--cta-text-color);
+                  padding: var(--spacing-sm) var(--spacing-md);
+                  border-radius: var(--cta-border-radius);
+                  font-size: var(--font-size-03);
+                  font-weight: var(--cta-font-weight);
+                  cursor: pointer;
+                  transition: all 0.2s var(--ease-fast);
+                ">
+              Explore analytics and reporting
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-4" style="background: var(--bg-dark-1); padding: var(--spacing-xxlarge) var(--spacing-md)">
+    <div class="container" style="
+          padding: var(--spacing-x-minilarge) var(--spacing-lg);
+          display: grid;
+          grid-template-columns: 33.3333% 58.3333%;
+          column-gap: 8.33333%;
+          color: var(--color-white);
+          max-width: var(--max-width);
+          margin: auto;
+        ">
+      <div>
+        <h2 style="
+              font-size: var(--font-size-09);
+              font-weight: 500;
+              margin-bottom: var(--spacing-md);
+            ">
+          Find out why we’re best-in-class
+        </h2>
+        <p style="
+              font-size: var(--font-size-05);
+              line-height: var(--font-lineheight-size-05);
+            ">
+          The #1 email marketing and automations platform* that recommends
+          ways to get more opens, clicks, and sales.
+        </p>
+      </div>
+      <div class="benifits" style="
+            display: grid;
+            grid-template-columns:var(--grid-full);
+            gap: var(--spacing-lg);
+          ">
+        <div>
+          <h3 style="
+                font-size: var(--font-size-05);
+                margin-bottom: var(--spacing-md);
+              ">
+            Up to 25x ROI
+          </h3>
+          <p style="font-size: var(--font-size-03)">
+            seen by Mailchimp users*
+          </p>
+        </div>
+        <div>
+          <h3 style="
+                font-size: var(--font-size-05);
+                margin-bottom: var(--spacing-md);
+              ">
+            11M+ Users
+          </h3>
+          <p style="font-size: var(--font-size-03)">of Mailchimp globally</p>
+        </div>
+        <div>
+          <h3 style="
+                font-size: var(--font-size-05);
+                margin-bottom: var(--spacing-md);
+              ">
+            22 years experience
+          </h3>
+          <p style="font-size: var(--font-size-03)">
+            helping businesses sell more
+          </p>
+        </div>
+        <div>
+          <h3 style="
+                font-size: var(--font-size-05);
+                margin-bottom: var(--spacing-md);
+              ">
+            Over 3.1 billion emails
+          </h3>
+          <p style="font-size: var(--font-size-03)">
+            with AI-generated content sent by Mailchimp customers*
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-5" style="padding: var(--spacing-xxlarge) 0">
+    <div class="container" style="
+          max-width: var(--max-width);
+          margin: auto;
+          display: grid;
+          grid-template-columns:var(--grid-full);
+          padding: 0 var(--spacing-md);
+        ">
+      <div style="
+            margin-right: 16.6%;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: center;
+          ">
+        <h2 style="
+              font-size: var(--font-size-09);
+              font-weight: var(--font-weight-medium);
+              color: var(--color-black);
+              margin-bottom: var(--spacing-rw-medium-button-padding);
+            ">
+          Get started easily with a personalized product tour
+        </h2>
+        <p style="
+              font-size: var(--font-size-03);
+              padding-right: var(--spacing-40);
+              margin-bottom: var(--spacing-rw-medium-button-padding);
+            ">
+          An onboarding specialist is here to help you get started with
+          confidence—it’s included with Standard and Premium plans.*
+        </p>
+        <a style="
+              text-decoration: none;
+              font-size: var(--font-size-03);
+              color: var(--color-black);
+              display: flex;
+              gap: var(--spacing-10);
+              align-items: center;
+            " href="">Learn more about onboarding
+          <img style="
+                background: var(--color-primary);
+                border-radius: var(--border-radius-rounded);
+                padding: var(--spacing-sm);
+                width: 30px;
+                height: 30px;
+              " src="https://mailchimp.com/release/plums/d587a00f04ec1dd3.svg" alt="" /></a>
+      </div>
+      <div>
+        <img style="margin-top: var(--spacing-lg);" width="100%"
+          src="https://mailchimp.com/ctf/images/yzco4xsimv0y/eeOxTgGvLZjag4xB9SK7h/18bbe5f5514e075ae697322976223c1f/Onboarding_Placement_-_Woman_on_phone_and_laptop.png?w=640&fm=avif&q=60"
+          alt="" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-6" style="background-color: var(--bg-light-4)">
+    <div class="container" style="
+          max-width: var(--max-width);
+          margin: auto;
+          padding: var(--spacing-xxlarge) var(--spacing-md);
+          display: flex;
+          column-gap: 6%;
+          flex-wrap: var(--wrap);
+        ">
+      <div>
+        <h2 style="
+              font-size: var(--font-size-10);
+              margin-bottom: var(--spacing-20);
+              font-weight: var(--font-weight-medium);
+            ">
+          Try our Standard plan for
+          <span style="text-decoration: underline var(--color-primary) solid 8px">50% off!</span>
+        </h2>
+        <p style="
+              margin-bottom: var(--spacing-20);
+              font-size: var(--font-size-03);
+              line-height: var(--font-lineheight-heading-02);
+            ">
+          Spend less to grow more with 50% off for 12 months, even if you
+          change to our
+          <a style="color: var(--color-black)" href="">Premium</a> or
+          <a style="color: var(--color-black)" href="">Essentials</a> plans.
+          Cancel or downgrade to our basic
+          <a style="color: var(--color-black)" href="">Free</a> plan at any
+          time.
+        </p>
+        <div class="features-list" style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              max-width: 70%;
+              font-size: var(--font-size-02);
+            ">
+          <ul style="list-style: none">
+            <li style="align-items:center; 
+                  display: flex;
+                  gap: var(--spacing-10);
+                  margin-bottom: var(--spacing-10);
+                ">
+              <span style="
+                    background: var(--color-primary);
+                    border-radius: var(--border-radius-rounded);
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: fit-content;
+                    padding: 5px;
+                  ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--yes" width="13" height="13"
+                  viewBox="0 0 17 13">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M16.7072 1.70712L6.00008 12.4142L0.792969 7.20712L2.20718 5.79291L6.00008 9.5858L15.293 0.292908L16.7072 1.70712Z"
+                    fill="#000"></path>
+                </svg>
+              </span>
+              Generative AI features
+            </li>
+            <li style="align-items:center; 
+                  display: flex;
+                  gap: var(--spacing-10);
+                  margin-bottom: var(--spacing-10);
+                ">
+              <span style="
+                    background: var(--color-primary);
+                    border-radius: var(--border-radius-rounded);
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: fit-content;
+                    padding: 5px;
+                  ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--yes" width="13" height="13"
+                  viewBox="0 0 17 13">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M16.7072 1.70712L6.00008 12.4142L0.792969 7.20712L2.20718 5.79291L6.00008 9.5858L15.293 0.292908L16.7072 1.70712Z"
+                    fill="#000"></path>
+                </svg>
+              </span>
+              Generative AI features
+            </li>
+            <li style="align-items:center; 
+                  display: flex;
+                  gap: var(--spacing-10);
+                  margin-bottom: var(--spacing-10);
+                ">
+              <span style="
+                    background: var(--color-primary);
+                    border-radius: var(--border-radius-rounded);
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: fit-content;
+                    padding: 5px;
+                  ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--yes" width="13" height="13"
+                  viewBox="0 0 17 13">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M16.7072 1.70712L6.00008 12.4142L0.792969 7.20712L2.20718 5.79291L6.00008 9.5858L15.293 0.292908L16.7072 1.70712Z"
+                    fill="#000"></path>
+                </svg>
+              </span>
+              Generative AI features
+            </li>
+          </ul>
+          <ul style="list-style: none">
+            <li style="align-items:center; 
+                  display: flex;
+                  gap: var(--spacing-10);
+                  margin-bottom: var(--spacing-10);
+                ">
+              <span style="
+                    background: var(--color-primary);
+                    border-radius: var(--border-radius-rounded);
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: fit-content;
+                    padding: 5px;
+                  ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--yes" width="13" height="13"
+                  viewBox="0 0 17 13">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M16.7072 1.70712L6.00008 12.4142L0.792969 7.20712L2.20718 5.79291L6.00008 9.5858L15.293 0.292908L16.7072 1.70712Z"
+                    fill="#000"></path>
+                </svg>
+              </span>
+              Generative AI features
+            </li>
+            <li style="align-items:center; 
+                  display: flex;
+                  gap: var(--spacing-10);
+                  margin-bottom: var(--spacing-10);
+                ">
+              <span style="
+                    background: var(--color-primary);
+                    border-radius: var(--border-radius-rounded);
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: fit-content;
+                    padding: 5px;
+                  ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--yes" width="13" height="13"
+                  viewBox="0 0 17 13">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M16.7072 1.70712L6.00008 12.4142L0.792969 7.20712L2.20718 5.79291L6.00008 9.5858L15.293 0.292908L16.7072 1.70712Z"
+                    fill="#000"></path>
+                </svg>
+              </span>
+              Generative AI features
+            </li>
+            <li style="align-items:center; 
+                  display: flex;
+                  gap: var(--spacing-10);
+                  margin-bottom: var(--spacing-10);
+                ">
+              <span style="
+                    background: var(--color-primary);
+                    border-radius: var(--border-radius-rounded);
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: fit-content;
+                    padding: 5px;
+                  ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--yes" width="13" height="13"
+                  viewBox="0 0 17 13">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M16.7072 1.70712L6.00008 12.4142L0.792969 7.20712L2.20718 5.79291L6.00008 9.5858L15.293 0.292908L16.7072 1.70712Z"
+                    fill="#000"></path>
+                </svg>
+              </span>
+              Generative AI features
+            </li>
+          </ul>
+        </div>
+        <a style="
+              text-decoration: none;
+              font-size: var(--font-size-03);
+              color: var(--color-black);
+              display: flex;
+              gap: var(--spacing-10);
+              align-items: center;
+              margin: var(--spacing-lg) 0;
+            " href="">See all plans
+          <img style="
+                background: var(--color-primary);
+                border-radius: var(--border-radius-rounded);
+                padding: var(--spacing-sm);
+                width: 30px;
+                height: 30px;
+              " src="https://mailchimp.com/release/plums/d587a00f04ec1dd3.svg" alt="" />
+        </a>`
+      </div>
+      <div class="price-card" style="width: 40%">
+        <div style="
+              background-color: var(--color-white);
+              padding: 2rem 0.75rem;
+              box-shadow: 0 0 1.25rem 0.1875rem rgba(35, 30, 21, 0.15);
+            ">
+          <h3 style="
+                font-size: var(--font-size-09);
+                font-weight: var(--font-weight-medium);
+                margin-bottom: var(--spacing-md);
+              ">
+            Standard
+          </h3>
+          <p style="
+                font-size: var(--font-size-03);
+                margin-bottom: var(--spacing-md);
+              ">
+            Send up to 6,000 emails each month.
+          </p>
+          <div style="
+                margin-bottom: var(--spacing-md);
+                margin-bottom: var(--spacing-md);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: var(--spacing-xsmall) var(--spacing-sm);
+                border: 0.0625rem solid rgba(35, 30, 21, 0.15);
+              ">
+            <label style="
+                  font-size: var(--font-size-03);
+                  margin-bottom: var(--spacing-sm);
+                  display: block;
+                ">Contacts</label>
+            <select style="
+                  padding: var(--spacing-sm);
+                  border: 1px solid var(--color-gray-300);
+                  border-radius: var(--border-radius-sm);
+                  font-size: var(--font-size-06);
+                ">
+              <option value="500">500</option>
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+          <p style="
+                font-size: var(--font-size-02);
+                margin-bottom: var(--spacing-rw-medium-button-padding);
+              ">
+            Starts at <br />
+            <span style="
+                  text-decoration: line-through;
+                  font-size: var(--font-size-07);
+                  color: grey;
+                ">$20</span>
+            <span style="font-size: var(--font-size-07)"> $10</span>/month for
+            12 months
+          </p>
+          <p style="
+                font-size: var(--font-size-03);
+                color: var(--color-gray-600);
+              ">
+            Then, starts at $20/month
+          </p>
+          <button class="btn-secondary" style="width: 100%; margin: var(--button-padding-horizontal) 0">
+            Buy Now
+          </button>
+          <p style="
+                font-size: var(--font-size-02);
+                color: var(--color-gray-500);
+                margin-top: var(--spacing-sm);
+              ">
+            *See Offer Terms. Quarterly billing only if contact or email send
+            limit is exceeded. Learn more.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secction-7">
+    <div class="container" style="
+          max-width: var(--max-width);
+          margin: auto;
+          padding: var(--spacing-xxlarge) var(--spacing-md);
+        ">
+      <div>
+        <h2 style="
+              font-size: var(--font-size-10);
+              margin-bottom: var(--spacing-20);
+              font-weight: var(--font-weight-medium);
+            ">
+          Bring in more data, drive more <br />
+          growth with our integrations
+        </h2>
+      </div>
+      <div class="integrations" style="
+            display: grid;
+            grid-template-columns: repeat(3, var(--grid-column-04));
+          ">
+        <div style="
+              display: flex;
+              padding: var(--spacing-lg);
+              gap: var(--spacing-md);
+              font-size: var(--font-size-03);
+            ">
+          <img style="width: 96px; height: 96px; object-fit: contain"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/egMxvwdsj41K5eESLhWBO/cf823adbd311e33919f97ffc5bf3181d/Canva.jpg?w=196&fm=avif&q=60"
+            alt="" />
+          <div>
+            <h3 style="
+                  font-size: var(--font-size-03);
+                  margin-bottom: var(--spacing-10);
+                ">
+              Canva
+            </h3>
+            <p style="font-size: var(--font-size-02)">
+              Create compelling visuals for your marketing.
+            </p>
+          </div>
+        </div>
+        <div style="
+              display: flex;
+              padding: var(--spacing-lg);
+              gap: var(--spacing-md);
+              font-size: var(--font-size-03);
+            ">
+          <img style="width: 96px; height: 96px; object-fit: contain"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/51oq4AakIqo8fATlHgqHK0/02a750b1c1a16745296dca6fa7cb830c/Salesforce__1_.jpg?w=196&fm=avif&q=60"
+            alt="" />
+          <div>
+            <h3 style="
+                  font-size: var(--font-size-03);
+                  margin-bottom: var(--spacing-10);
+                ">
+              Mailchimp for Salesforce
+            </h3>
+            <p style="font-size: var(--font-size-02)">
+              Sync your Mailchimp subscribers and Salesforce® leads across
+              platforms.
+            </p>
+          </div>
+        </div>
+        <div style="
+              display: flex;
+              padding: var(--spacing-lg);
+              gap: var(--spacing-md);
+              font-size: var(--font-size-03);
+            ">
+          <img style="width: 96px; height: 96px; object-fit: contain"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/67trWJLKtKcvrqlKYSlskE/696ad499e0cc60aa7392521a6a7cfd90/Instagram__1_.jpg?w=196&fm=avif&q=60"
+            alt="" />
+          <div>
+            <h3 style="
+                  font-size: var(--font-size-03);
+                  margin-bottom: var(--spacing-10);
+                ">
+              Instagram
+            </h3>
+            <p style="font-size: var(--font-size-02)">
+              Promote and share your Instagram posts in email campaigns.
+            </p>
+          </div>
+        </div>
+        <div style="
+              display: flex;
+              padding: var(--spacing-lg);
+              gap: var(--spacing-md);
+              font-size: var(--font-size-03);
+            ">
+          <img style="width: 96px; height: 96px; object-fit: contain"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/uZVnrVt3DO1G4Ec5G4pvs/e6c9d3c2613827f7dd238f1c5e0b02d9/Quickbooks.jpg?w=196&fm=avif&q=60"
+            alt="" />
+          <div>
+            <h3 style="
+                  font-size: var(--font-size-03);
+                  margin-bottom: var(--spacing-10);
+                ">
+              QuickBooks Online
+            </h3>
+            <p style="font-size: var(--font-size-02)">
+              Bring together your marketing tools and invoice data.
+            </p>
+          </div>
+        </div>
+        <div style="
+              display: flex;
+              padding: var(--spacing-lg);
+              gap: var(--spacing-md);
+              font-size: var(--font-size-03);
+            ">
+          <img style="width: 96px; height: 96px; object-fit: contain"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/2klSrOoLZKmLuGKZjKT9o3/ca400f60c2f3673f3ab9b52f4d03360d/Squarespace.jpg?w=196&fm=avif&q=60"
+            alt="" />
+          <div>
+            <h3 style="
+                  font-size: var(--font-size-03);
+                  margin-bottom: var(--spacing-10);
+                ">
+              Squarespace Commerce
+            </h3>
+            <p style="font-size: var(--font-size-02)">
+              Market your ecommerce business and drive sales.
+            </p>
+          </div>
+        </div>
+        <div style="
+              display: flex;
+              padding: var(--spacing-lg);
+              gap: var(--spacing-md);
+              font-size: var(--font-size-03);
+            ">
+          <img style="width: 96px; height: 96px; object-fit: contain"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/26deBkGp3A5Pj7suZ9oV7V/858e8a4603707166988a3282bca7e29b/Zapier.jpg?w=196&fm=avif&q=60"
+            alt="" />
+          <div>
+            <h3 style="
+                  font-size: var(--font-size-03);
+                  margin-bottom: var(--spacing-10);
+                ">
+              Zapier
+            </h3>
+            <p style="font-size: var(--font-size-02)">
+              Automatically pass data between web services without a single
+              line of code.
+            </p>
+          </div>
+        </div>
+        <div style="
+              display: flex;
+              padding: var(--spacing-lg);
+              gap: var(--spacing-md);
+              font-size: var(--font-size-03);
+            ">
+          <img style="width: 96px; height: 96px; object-fit: contain"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/44dW9Z4hibyDYi0qggfets/b01884985e996ffb5dc133556b92bb7a/Shopify__1_.jpg?w=196&fm=avif&q=60"
+            alt="" />
+          <div>
+            <h3 style="
+                  font-size: var(--font-size-03);
+                  margin-bottom: var(--spacing-10);
+                ">
+              Shopify
+            </h3>
+            <p style="font-size: var(--font-size-02)">
+              Sync Shopify customers, products, and purchase data to
+              Mailchimp.
+            </p>
+          </div>
+        </div>
+        <div style="
+              display: flex;
+              padding: var(--spacing-lg);
+              gap: var(--spacing-md);
+              font-size: var(--font-size-03);
+            ">
+          <img style="width: 96px; height: 96px; object-fit: contain"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/7mpZ7UZrdzk2BmWX1OnRvb/5e610ecd21eeb25d0b82b098ce424e34/Google_Analytics2.jpg?w=196&fm=avif&q=60"
+            alt="" />
+          <div>
+            <h3 style="
+                  font-size: var(--font-size-03);
+                  margin-bottom: var(--spacing-10);
+                ">
+              Google Analytics
+            </h3>
+            <p style="font-size: var(--font-size-02)">
+              Unlock powerful insights with campaign, website, or landing page
+              data.
+            </p>
+          </div>
+        </div>
+        <div style="
+              display: flex;
+              padding: var(--spacing-lg);
+              gap: var(--spacing-md);
+              font-size: var(--font-size-03);
+            ">
+          <img style="width: 96px; height: 96px; object-fit: contain"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/2uruOq31Y1FKdghFWn5zMg/c931da8bac7dd9608cbfbbd49342d705/Logo_Woo_color.png?w=196&fm=avif&q=60"
+            alt="" />
+          <div>
+            <h3 style="
+                  font-size: var(--font-size-03);
+                  margin-bottom: var(--spacing-10);
+                ">
+              WooCommerce
+            </h3>
+            <p style="font-size: var(--font-size-02)">
+              Power your ecommerce store with smart marketing features.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <a style="
+              text-decoration: none;
+              font-size: var(--font-size-03);
+              color: var(--color-black);
+              display: flex;
+              gap: var(--spacing-10);
+              align-items: center;
+              margin: var(--spacing-lg) 0;
+            " href="">View all 300+ integrations
+          <img style="
+                background: var(--color-primary);
+                border-radius: var(--border-radius-rounded);
+                padding: var(--spacing-sm);
+                width: 30px;
+                height: 30px;
+              " src="https://mailchimp.com/release/plums/d587a00f04ec1dd3.svg" alt="" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-8" style="
+        background: var(--bg-dark-1);
+        padding: var(--spacing-xxlarge) 0;
+        text-align: center;
+      ">
+    <div class="container" style="
+          max-width: var(--width-full);
+          margin: auto;
+          color: var(--color-white);
+          padding: 0 var(--spacing-md);
+        ">
+      <div>
+        <h2 style="
+              font-size: var(--font-size-09);
+              margin-bottom: var(--spacing-rw-medium-button-padding);
+            ">
+          Millions of users trust us with their email <br />
+          marketing. You can too.
+        </h2>
+        <button class="btn-secondary">Buy Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-9">
+    <div class="container"
+      style="max-width: var(--max-width); margin: auto; padding: var(--spacing-xlarge) var(--spacing-lg)">
+      <div>
+        <p style="font-size: var(--font-size-02)">*Disclaimers<br /></p>
+        <ol>
+          <li style="font-size: var(--font-size-02)">
+            #1 AI-powered email marketing platform: Based on December 2023
+            publicly available data on the number of customers of competitors
+            that also advertise using AI to enhance their email marketing and
+            automation products and services.
+          </li>
+          <li style="font-size: var(--font-size-02)">
+            #1 email marketing and automation platform: Mailchimp is the #1
+            email marketing and automation platform based on December 2023
+            publicly available data on competitors' number of customers.
+          </li>
+          <li style="font-size: var(--font-size-02)">
+            SMS Marketing: SMS is available as an add-on to paid plans in
+            select countries. Application and agreement to terms is required
+            before purchasing credits. Messages can only be delivered to
+            contacts in the country selected. Australia messaging available
+            only for contacts with +61 country code. SMS credits are added to
+            your account after purchase and approval. Credits are issued
+            monthly and unused credits expire and do not roll over. MMS only
+            available for Standard and Premium plans sending to US and Canada
+            contacts. Pricing varies. Click here for details.
+          </li>
+          <li style="font-size: var(--font-size-02)">
+            Intuit Assist: Intuit Assist functionality (beta) is available to
+            certain users with Premium, Standard and Legacy plans in select
+            countries in English only. Access to Intuit Assist is available at
+            no additional cost at this time. Pricing, terms, conditions,
+            special features and service options are subject to change without
+            notice. Availability of features and functionality varies by plan
+            type. Features may be broadly available soon but represents no
+            obligation and should not be relied on in making a purchasing
+            decision. For details, please view Mailchimp’s various plans and
+            pricing.
+          </li>
+          <li style="font-size: var(--font-size-02)">
+            Personalized onboarding: Onboarding services differ per plan and
+            are available for new or upgraded users with a Standard or Premium
+            plan for the first 90 days after account creation or upgrade.
+            Onboarding services are currently offered in English, Spanish and
+            Portuguese for Premium plans, and in English for Standard plans.
+          </li>
+          <li style="font-size: var(--font-size-02)">
+            24X ROI Standard Plan: Based on all e-commerce revenue
+            attributable to Standard plan users’ Mailchimp campaigns from
+            April 2023 to April 2024.
+          </li>
+          <li style="font-size: var(--font-size-02)">
+            Availability of features and functionality varies by plan type.
+            For details, view plans and pricing.
+          </li>
+          <li style="font-size: var(--font-size-02)">
+            25X ROI: Based on all e-commerce revenue attributable to paid plan
+            users’ Mailchimp campaigns from April 2023 to April 2024
+          </li>
+          <li style="font-size: var(--font-size-02)">
+            3.1 Billion Emails Sent: Based on InLine AI Assistant feature for
+            December 2023 - August 2024. Standard and Premium plans only.
+          </li>
+          <li style="font-size: var(--font-size-02)">
+            Popup forms (beta): Very limited availability to new and existing
+            Mailchimp users and on web browsers only. Features may be more
+            broadly available soon, but represents no obligation and should
+            not be relied on in making a purchasing decision. Availability of
+            features and functionality varies by plan type. For details, view
+            plans and pricing.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</body>
+<footer>
+  <section style="
+        background-color: var(--bg-footer);
+        padding: var(--spacing-large) var(--spacing-md);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid;
+      ">
+    <div class="related-links" style="
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          max-width: var(--max-width);
+          margin: auto;
+        ">
+      <div>
+        <p style="color: var(--color-black)">Related links:</p>
+      </div>
+      <div>
+        <a href="" style="color: var(--color-black); font-size: var(--font-size-01)">A/B Testing in Digital
+          Marketing</a>
+      </div>
+      <div>
+        <a href="" style="color: var(--color-black); font-size: var(--font-size-01)">What is SEO in digital
+          marketing?</a>
+      </div>
+      <div>
+        <a href="" style="color: var(--color-black); font-size: var(--font-size-01)">ChatGPT: What to Know About This AI
+          Content Writing Tool</a>
+      </div>
+    </div>
+  </section>
+  <section style="
+        background: var(--bg-footer);
+        padding-top: var(--spacing-xlarge);
+        padding-bottom: var(--spacing-xlarge);
+        border-bottom: 1px solid;
+      ">
+    <div style="
+          row-gap: var(--spacing-xlarge);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          padding: 0 var(--spacing-md);
+        ">
+      <div class="important-links" style="
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            font-family: var(--font-base);
+            color: var(--color-black);
+            max-width: var(--max-width);
+            margin: auto;
+          ">
+        <!-- Column 1: Products -->
+        <div style="
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-xxsmall);
+            ">
+          <p style="
+                font-size: var(--font-size-03);
+                color: var(--color-black);
+                margin: 0;
+              ">
+            Products
+          </p>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Why Mailchimp?</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Product Updates</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Email Marketing</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Websites</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Transactional Email</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">How We Compare</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">GDPR Compliance</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Security</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Status</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Mobile App</a>
+        </div>
+
+        <!-- Column 2: Features -->
+        <div style="
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-xxsmall);
+            ">
+          <p style="
+                font-size: var(--font-size-03);
+                color: var(--color-black);
+                margin: 0;
+              ">
+            Resources
+          </p>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Mobile app</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Marketing Library</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Free Marketing Tools</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Marketing Glossary</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Integrations Directory</a>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div style="
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-xxsmall);
+            ">
+          <p style="
+                font-size: var(--font-size-03);
+                color: var(--color-black);
+                margin: 0;
+              ">
+            Community
+          </p>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Agencies & Freelancers</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Developers</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Tutorials</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Events</a>
+        </div>
+
+        <!-- Column 4: Partners -->
+        <div style="
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-xxsmall);
+            ">
+          <p style="
+                font-size: var(--font-size-03);
+                color: var(--color-black);
+                margin: 0;
+              ">
+            Company
+          </p>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">For accountants</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Our Story</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Newsroom</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Give Where You Live</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Careers</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Accessibility</a>
+        </div>
+
+        <!-- Column 5: More from Intuit -->
+        <div style="
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-xxsmall);
+            ">
+          <p style="
+                font-size: var(--font-size-03);
+                color: var(--color-black);
+                margin: 0;
+              ">
+            Help
+          </p>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Contact Us</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Hire an Expert</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Help Center</a>
+          <a href="#" style="
+                color: var(--color-black);
+                text-decoration: NONE;
+                font-size: var(--font-size-02);
+                line-height: var(--font-lineheight-body);
+              ">Talk to Sales</a>
+        </div>
+
+        <!-- column 6 -->
+        <div>
+          <div style="margin-bottom: var(--spacing-20)">
+            🐵 <strong>MonkeyMail</strong>
+          </div>
+          <p style="
+                font-size: var(--font-size-02);
+                margin-bottom: var(--spacing-10);
+              ">
+            Films, podcasts, and original series that celebrate the
+            entrepreneurial spirit.
+          </p>
+          <a style="
+                text-decoration: none;
+                font-size: var(--font-size-03);
+                color: var(--color-black);
+                display: flex;
+                gap: var(--spacing-10);
+                align-items: center;
+              " href="">Check it out
+            <img style="
+                  background: var(--color-primary);
+                  border-radius: var(--border-radius-rounded);
+                  padding: var(--spacing-sm);
+                  width: 30px;
+                  height: 30px;
+                " src="https://mailchimp.com/release/plums/d587a00f04ec1dd3.svg" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="background: var(--bg-footer)">
+    <div class="container"
+      style="text-align: center; padding: 0 var(--spacing-md) var(--spacing-xxlarge); max-width: var(--max-width); margin: auto;">
+      <div class="logos-footer" style="
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-small);
+            padding: var(--spacing-lg);
+            flex-wrap: var(--wrap);
+          ">
+        <div style="
+              font-weight: var(--font-weight-heavy);
+              font-size: var(--font-size-04);
+            ">
+          <svg class="brandLogoIntuit" width="80" height="16" viewBox="0 0 80 16" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M33.6468 4V16H29.5807V4H24.7014V0H38.526V4H33.6468Z" fill="#241C15"></path>
+            <path
+              d="M14.9428 0C19.0544 0 22.2618 2.8 22.2618 6.8V16H18.1957V7.2C18.1957 5.13548 16.7997 3.8 14.9428 3.8C13.086 3.8 11.69 5.13548 11.69 7.2V16H7.62389V6.8C7.62389 2.8 10.8312 0 14.9428 0Z"
+              fill="#241C15"></path>
+            <path d="M0 0H4.06607V16H0V0Z" fill="#241C15"></path>
+            <path d="M75.1207 4V16H71.0546V4H66.1753V0H80V4H75.1207Z" fill="#241C15"></path>
+            <path
+              d="M48.3863 16C52.4979 16 55.7052 13.2 55.7052 9.2V0H51.6391V8.8C51.6391 10.8645 50.2431 12.2 48.3863 12.2C46.5294 12.2 45.1334 10.8645 45.1334 8.8V0H41.0673V9.2C41.0673 13.2 44.2746 16 48.3863 16Z"
+              fill="#241C15"></path>
+            <path d="M59.3647 0H63.4307V16H59.3647V0Z" fill="#241C15"></path>
+          </svg>
+        </div>
+        <nav>
+          <div class="links" style="
+                display: flex;
+                align-items: flex-end;
+                justify-content: left;
+                gap: var(--spacing-small);
+                flex-wrap: var(--wrap); 
+                justify-content: center;
+              ">
+            <a>
+              <svg class="brandLogoTurboTax" width="76" height="17" viewBox="0 0 76 17" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path class="svg_circle"
+                  d="M8.00927 16.0188C12.4327 16.0188 16.0187 12.4327 16.0187 8.00935C16.0187 3.58591 12.4327 0 8.00927 0C3.58582 0 0 3.58591 0 8.00935C0 12.4327 3.58582 16.0188 8.00927 16.0188Z"
+                  fill="#241C15"></path>
+                <path class="svg_logo"
+                  d="M6.23265 10.9302C5.29702 10.2664 4.41829 9.55843 3.5712 8.79987C3.26156 9.46361 2.99611 10.1716 2.73047 10.886C4.06429 12.0364 5.87865 13.326 7.12392 14.0783C8.71683 9.95668 11.2077 7.24476 13.5972 5.34199C13.2874 4.67823 12.8892 4.09665 12.3517 3.61621C9.8232 5.56325 7.7372 8.04759 6.23265 10.9302Z"
+                  fill="white"></path>
+                <path class="svg_text"
+                  d="M17.9844 8.35697V6.91568H19.2484V4.82324H21.0251V6.91568H22.8331V8.35697H21.0251V11.7137C21.0251 12.3648 21.1771 12.8262 21.9727 12.8262C22.2131 12.8262 22.5354 12.7757 22.7385 12.6746L22.802 14.0905C22.4856 14.2107 21.9989 14.2865 21.6004 14.2865C19.6854 14.2865 19.2484 13.1108 19.2484 11.7326V8.36328H17.9844V8.35697Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M30.4119 14.1346H28.6986V12.9715H28.6737C28.3574 13.6984 27.4983 14.337 26.4299 14.337C24.5523 14.337 23.7617 12.8956 23.7617 11.4164V6.89648H25.5634V10.9043C25.5634 11.7577 25.7601 12.8324 26.9168 12.8324C28.0735 12.8324 28.6039 11.8399 28.6039 10.879V6.90912H30.4119V14.1346Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M33.9652 6.90926V8.11035H33.9912C34.3836 7.28223 35.1543 6.69434 36.0956 6.69434C36.2351 6.69434 36.4118 6.70699 36.5327 6.74492V8.40115C36.2923 8.33794 36.1403 8.32528 35.9698 8.32528C34.3449 8.32528 34.0287 9.7413 34.0287 10.266V14.1349H32.2207V6.90926H33.9589H33.9652Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M39.2497 2.75586V7.8257H39.2995C39.6732 7.35791 40.4003 6.70048 41.7275 6.70048C43.7883 6.70048 45.2364 8.35671 45.2364 10.4934C45.2364 12.63 43.8828 14.3495 41.6828 14.3495C40.6717 14.3495 39.6917 13.8817 39.205 13.0599H39.1801V14.1471H37.4668V2.75586H39.2559H39.2497ZM41.3166 8.17339C39.9893 8.17339 39.1924 9.39344 39.1924 10.5187C39.1924 11.6438 39.9955 12.8387 41.3166 12.8387C42.7199 12.8387 43.3961 11.6249 43.3961 10.4934C43.3961 9.36182 42.7199 8.17339 41.3166 8.17339Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M50.1685 6.70068C52.3491 6.70068 54.1 8.21785 54.1 10.4936C54.1 12.7694 52.3491 14.3497 50.1685 14.3497C47.9871 14.3497 46.2363 12.7694 46.2363 10.4936C46.2363 8.21785 47.9809 6.70068 50.1685 6.70068ZM50.1685 12.8389C51.5963 12.8389 52.26 11.6251 52.26 10.4936C52.26 9.36203 51.5963 8.17359 50.1685 8.17359C48.7391 8.17359 48.0754 9.36203 48.0754 10.4936C48.0754 11.6251 48.7391 12.8389 50.1685 12.8389Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M54.5234 8.35697V6.91568H55.7871V4.82324H57.5634V6.91568H59.3725V8.35697H57.5634V11.7137C57.5634 12.3648 57.7162 12.8262 58.5125 12.8262C58.7525 12.8262 59.0743 12.7757 59.278 12.6746L59.3398 14.0905C59.0253 14.2107 58.538 14.2865 58.1398 14.2865C56.2253 14.2865 55.7871 13.1108 55.7871 11.7326V8.36328H54.5234V8.35697Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M65.0098 13.2118H64.9589C64.5989 13.8503 63.7461 14.3118 62.7152 14.3118C61.5516 14.3118 60.0098 13.7554 60.0098 12.0676C60.0098 9.91197 62.7152 9.61488 64.9789 9.61488V9.43786C64.9789 8.54654 64.2261 8.11035 63.3225 8.11035C62.557 8.11035 61.8189 8.47068 61.3552 8.93846L60.4207 7.83854C61.237 7.08626 62.3734 6.69434 63.4734 6.69434C66.0643 6.69434 66.6916 8.28735 66.6916 9.73497V14.1285H65.0025V13.2118H65.0098ZM64.9843 10.8412H64.5789C63.4352 10.8412 61.8243 10.9803 61.8243 12.0424C61.8243 12.7314 62.4752 12.9463 63.0879 12.9463C64.3261 12.9463 64.9898 12.2446 64.9898 11.0941V10.8412H64.9843Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M70.4546 10.2975L67.8492 6.91553H70.0164L71.5855 9.15966L73.1964 6.91553H75.2783L72.6855 10.2975L75.6383 14.1346H73.4437L71.5655 11.5049L69.6637 14.1346H67.5273L70.4601 10.2975H70.4546Z"
+                  fill="#241C15"></path>
+              </svg>
+            </a>
+            <a>
+              <svg class="brandLogoTurboTax" width="76" height="17" viewBox="0 0 76 17" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path class="svg_circle"
+                  d="M8.00927 16.0188C12.4327 16.0188 16.0187 12.4327 16.0187 8.00935C16.0187 3.58591 12.4327 0 8.00927 0C3.58582 0 0 3.58591 0 8.00935C0 12.4327 3.58582 16.0188 8.00927 16.0188Z"
+                  fill="#241C15"></path>
+                <path class="svg_logo"
+                  d="M6.23265 10.9302C5.29702 10.2664 4.41829 9.55843 3.5712 8.79987C3.26156 9.46361 2.99611 10.1716 2.73047 10.886C4.06429 12.0364 5.87865 13.326 7.12392 14.0783C8.71683 9.95668 11.2077 7.24476 13.5972 5.34199C13.2874 4.67823 12.8892 4.09665 12.3517 3.61621C9.8232 5.56325 7.7372 8.04759 6.23265 10.9302Z"
+                  fill="white"></path>
+                <path class="svg_text"
+                  d="M17.9844 8.35697V6.91568H19.2484V4.82324H21.0251V6.91568H22.8331V8.35697H21.0251V11.7137C21.0251 12.3648 21.1771 12.8262 21.9727 12.8262C22.2131 12.8262 22.5354 12.7757 22.7385 12.6746L22.802 14.0905C22.4856 14.2107 21.9989 14.2865 21.6004 14.2865C19.6854 14.2865 19.2484 13.1108 19.2484 11.7326V8.36328H17.9844V8.35697Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M30.4119 14.1346H28.6986V12.9715H28.6737C28.3574 13.6984 27.4983 14.337 26.4299 14.337C24.5523 14.337 23.7617 12.8956 23.7617 11.4164V6.89648H25.5634V10.9043C25.5634 11.7577 25.7601 12.8324 26.9168 12.8324C28.0735 12.8324 28.6039 11.8399 28.6039 10.879V6.90912H30.4119V14.1346Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M33.9652 6.90926V8.11035H33.9912C34.3836 7.28223 35.1543 6.69434 36.0956 6.69434C36.2351 6.69434 36.4118 6.70699 36.5327 6.74492V8.40115C36.2923 8.33794 36.1403 8.32528 35.9698 8.32528C34.3449 8.32528 34.0287 9.7413 34.0287 10.266V14.1349H32.2207V6.90926H33.9589H33.9652Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M39.2497 2.75586V7.8257H39.2995C39.6732 7.35791 40.4003 6.70048 41.7275 6.70048C43.7883 6.70048 45.2364 8.35671 45.2364 10.4934C45.2364 12.63 43.8828 14.3495 41.6828 14.3495C40.6717 14.3495 39.6917 13.8817 39.205 13.0599H39.1801V14.1471H37.4668V2.75586H39.2559H39.2497ZM41.3166 8.17339C39.9893 8.17339 39.1924 9.39344 39.1924 10.5187C39.1924 11.6438 39.9955 12.8387 41.3166 12.8387C42.7199 12.8387 43.3961 11.6249 43.3961 10.4934C43.3961 9.36182 42.7199 8.17339 41.3166 8.17339Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M50.1685 6.70068C52.3491 6.70068 54.1 8.21785 54.1 10.4936C54.1 12.7694 52.3491 14.3497 50.1685 14.3497C47.9871 14.3497 46.2363 12.7694 46.2363 10.4936C46.2363 8.21785 47.9809 6.70068 50.1685 6.70068ZM50.1685 12.8389C51.5963 12.8389 52.26 11.6251 52.26 10.4936C52.26 9.36203 51.5963 8.17359 50.1685 8.17359C48.7391 8.17359 48.0754 9.36203 48.0754 10.4936C48.0754 11.6251 48.7391 12.8389 50.1685 12.8389Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M54.5234 8.35697V6.91568H55.7871V4.82324H57.5634V6.91568H59.3725V8.35697H57.5634V11.7137C57.5634 12.3648 57.7162 12.8262 58.5125 12.8262C58.7525 12.8262 59.0743 12.7757 59.278 12.6746L59.3398 14.0905C59.0253 14.2107 58.538 14.2865 58.1398 14.2865C56.2253 14.2865 55.7871 13.1108 55.7871 11.7326V8.36328H54.5234V8.35697Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M65.0098 13.2118H64.9589C64.5989 13.8503 63.7461 14.3118 62.7152 14.3118C61.5516 14.3118 60.0098 13.7554 60.0098 12.0676C60.0098 9.91197 62.7152 9.61488 64.9789 9.61488V9.43786C64.9789 8.54654 64.2261 8.11035 63.3225 8.11035C62.557 8.11035 61.8189 8.47068 61.3552 8.93846L60.4207 7.83854C61.237 7.08626 62.3734 6.69434 63.4734 6.69434C66.0643 6.69434 66.6916 8.28735 66.6916 9.73497V14.1285H65.0025V13.2118H65.0098ZM64.9843 10.8412H64.5789C63.4352 10.8412 61.8243 10.9803 61.8243 12.0424C61.8243 12.7314 62.4752 12.9463 63.0879 12.9463C64.3261 12.9463 64.9898 12.2446 64.9898 11.0941V10.8412H64.9843Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M70.4546 10.2975L67.8492 6.91553H70.0164L71.5855 9.15966L73.1964 6.91553H75.2783L72.6855 10.2975L75.6383 14.1346H73.4437L71.5655 11.5049L69.6637 14.1346H67.5273L70.4601 10.2975H70.4546Z"
+                  fill="#241C15"></path>
+              </svg>
+            </a>
+            <a>
+              <svg class="brandLogoTurboTax" width="76" height="17" viewBox="0 0 76 17" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path class="svg_circle"
+                  d="M8.00927 16.0188C12.4327 16.0188 16.0187 12.4327 16.0187 8.00935C16.0187 3.58591 12.4327 0 8.00927 0C3.58582 0 0 3.58591 0 8.00935C0 12.4327 3.58582 16.0188 8.00927 16.0188Z"
+                  fill="#241C15"></path>
+                <path class="svg_logo"
+                  d="M6.23265 10.9302C5.29702 10.2664 4.41829 9.55843 3.5712 8.79987C3.26156 9.46361 2.99611 10.1716 2.73047 10.886C4.06429 12.0364 5.87865 13.326 7.12392 14.0783C8.71683 9.95668 11.2077 7.24476 13.5972 5.34199C13.2874 4.67823 12.8892 4.09665 12.3517 3.61621C9.8232 5.56325 7.7372 8.04759 6.23265 10.9302Z"
+                  fill="white"></path>
+                <path class="svg_text"
+                  d="M17.9844 8.35697V6.91568H19.2484V4.82324H21.0251V6.91568H22.8331V8.35697H21.0251V11.7137C21.0251 12.3648 21.1771 12.8262 21.9727 12.8262C22.2131 12.8262 22.5354 12.7757 22.7385 12.6746L22.802 14.0905C22.4856 14.2107 21.9989 14.2865 21.6004 14.2865C19.6854 14.2865 19.2484 13.1108 19.2484 11.7326V8.36328H17.9844V8.35697Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M30.4119 14.1346H28.6986V12.9715H28.6737C28.3574 13.6984 27.4983 14.337 26.4299 14.337C24.5523 14.337 23.7617 12.8956 23.7617 11.4164V6.89648H25.5634V10.9043C25.5634 11.7577 25.7601 12.8324 26.9168 12.8324C28.0735 12.8324 28.6039 11.8399 28.6039 10.879V6.90912H30.4119V14.1346Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M33.9652 6.90926V8.11035H33.9912C34.3836 7.28223 35.1543 6.69434 36.0956 6.69434C36.2351 6.69434 36.4118 6.70699 36.5327 6.74492V8.40115C36.2923 8.33794 36.1403 8.32528 35.9698 8.32528C34.3449 8.32528 34.0287 9.7413 34.0287 10.266V14.1349H32.2207V6.90926H33.9589H33.9652Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M39.2497 2.75586V7.8257H39.2995C39.6732 7.35791 40.4003 6.70048 41.7275 6.70048C43.7883 6.70048 45.2364 8.35671 45.2364 10.4934C45.2364 12.63 43.8828 14.3495 41.6828 14.3495C40.6717 14.3495 39.6917 13.8817 39.205 13.0599H39.1801V14.1471H37.4668V2.75586H39.2559H39.2497ZM41.3166 8.17339C39.9893 8.17339 39.1924 9.39344 39.1924 10.5187C39.1924 11.6438 39.9955 12.8387 41.3166 12.8387C42.7199 12.8387 43.3961 11.6249 43.3961 10.4934C43.3961 9.36182 42.7199 8.17339 41.3166 8.17339Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M50.1685 6.70068C52.3491 6.70068 54.1 8.21785 54.1 10.4936C54.1 12.7694 52.3491 14.3497 50.1685 14.3497C47.9871 14.3497 46.2363 12.7694 46.2363 10.4936C46.2363 8.21785 47.9809 6.70068 50.1685 6.70068ZM50.1685 12.8389C51.5963 12.8389 52.26 11.6251 52.26 10.4936C52.26 9.36203 51.5963 8.17359 50.1685 8.17359C48.7391 8.17359 48.0754 9.36203 48.0754 10.4936C48.0754 11.6251 48.7391 12.8389 50.1685 12.8389Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M54.5234 8.35697V6.91568H55.7871V4.82324H57.5634V6.91568H59.3725V8.35697H57.5634V11.7137C57.5634 12.3648 57.7162 12.8262 58.5125 12.8262C58.7525 12.8262 59.0743 12.7757 59.278 12.6746L59.3398 14.0905C59.0253 14.2107 58.538 14.2865 58.1398 14.2865C56.2253 14.2865 55.7871 13.1108 55.7871 11.7326V8.36328H54.5234V8.35697Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M65.0098 13.2118H64.9589C64.5989 13.8503 63.7461 14.3118 62.7152 14.3118C61.5516 14.3118 60.0098 13.7554 60.0098 12.0676C60.0098 9.91197 62.7152 9.61488 64.9789 9.61488V9.43786C64.9789 8.54654 64.2261 8.11035 63.3225 8.11035C62.557 8.11035 61.8189 8.47068 61.3552 8.93846L60.4207 7.83854C61.237 7.08626 62.3734 6.69434 63.4734 6.69434C66.0643 6.69434 66.6916 8.28735 66.6916 9.73497V14.1285H65.0025V13.2118H65.0098ZM64.9843 10.8412H64.5789C63.4352 10.8412 61.8243 10.9803 61.8243 12.0424C61.8243 12.7314 62.4752 12.9463 63.0879 12.9463C64.3261 12.9463 64.9898 12.2446 64.9898 11.0941V10.8412H64.9843Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M70.4546 10.2975L67.8492 6.91553H70.0164L71.5855 9.15966L73.1964 6.91553H75.2783L72.6855 10.2975L75.6383 14.1346H73.4437L71.5655 11.5049L69.6637 14.1346H67.5273L70.4601 10.2975H70.4546Z"
+                  fill="#241C15"></path>
+              </svg>
+            </a>
+            <a>
+              <svg class="brandLogoTurboTax" width="76" height="17" viewBox="0 0 76 17" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path class="svg_circle"
+                  d="M8.00927 16.0188C12.4327 16.0188 16.0187 12.4327 16.0187 8.00935C16.0187 3.58591 12.4327 0 8.00927 0C3.58582 0 0 3.58591 0 8.00935C0 12.4327 3.58582 16.0188 8.00927 16.0188Z"
+                  fill="#241C15"></path>
+                <path class="svg_logo"
+                  d="M6.23265 10.9302C5.29702 10.2664 4.41829 9.55843 3.5712 8.79987C3.26156 9.46361 2.99611 10.1716 2.73047 10.886C4.06429 12.0364 5.87865 13.326 7.12392 14.0783C8.71683 9.95668 11.2077 7.24476 13.5972 5.34199C13.2874 4.67823 12.8892 4.09665 12.3517 3.61621C9.8232 5.56325 7.7372 8.04759 6.23265 10.9302Z"
+                  fill="white"></path>
+                <path class="svg_text"
+                  d="M17.9844 8.35697V6.91568H19.2484V4.82324H21.0251V6.91568H22.8331V8.35697H21.0251V11.7137C21.0251 12.3648 21.1771 12.8262 21.9727 12.8262C22.2131 12.8262 22.5354 12.7757 22.7385 12.6746L22.802 14.0905C22.4856 14.2107 21.9989 14.2865 21.6004 14.2865C19.6854 14.2865 19.2484 13.1108 19.2484 11.7326V8.36328H17.9844V8.35697Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M30.4119 14.1346H28.6986V12.9715H28.6737C28.3574 13.6984 27.4983 14.337 26.4299 14.337C24.5523 14.337 23.7617 12.8956 23.7617 11.4164V6.89648H25.5634V10.9043C25.5634 11.7577 25.7601 12.8324 26.9168 12.8324C28.0735 12.8324 28.6039 11.8399 28.6039 10.879V6.90912H30.4119V14.1346Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M33.9652 6.90926V8.11035H33.9912C34.3836 7.28223 35.1543 6.69434 36.0956 6.69434C36.2351 6.69434 36.4118 6.70699 36.5327 6.74492V8.40115C36.2923 8.33794 36.1403 8.32528 35.9698 8.32528C34.3449 8.32528 34.0287 9.7413 34.0287 10.266V14.1349H32.2207V6.90926H33.9589H33.9652Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M39.2497 2.75586V7.8257H39.2995C39.6732 7.35791 40.4003 6.70048 41.7275 6.70048C43.7883 6.70048 45.2364 8.35671 45.2364 10.4934C45.2364 12.63 43.8828 14.3495 41.6828 14.3495C40.6717 14.3495 39.6917 13.8817 39.205 13.0599H39.1801V14.1471H37.4668V2.75586H39.2559H39.2497ZM41.3166 8.17339C39.9893 8.17339 39.1924 9.39344 39.1924 10.5187C39.1924 11.6438 39.9955 12.8387 41.3166 12.8387C42.7199 12.8387 43.3961 11.6249 43.3961 10.4934C43.3961 9.36182 42.7199 8.17339 41.3166 8.17339Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M50.1685 6.70068C52.3491 6.70068 54.1 8.21785 54.1 10.4936C54.1 12.7694 52.3491 14.3497 50.1685 14.3497C47.9871 14.3497 46.2363 12.7694 46.2363 10.4936C46.2363 8.21785 47.9809 6.70068 50.1685 6.70068ZM50.1685 12.8389C51.5963 12.8389 52.26 11.6251 52.26 10.4936C52.26 9.36203 51.5963 8.17359 50.1685 8.17359C48.7391 8.17359 48.0754 9.36203 48.0754 10.4936C48.0754 11.6251 48.7391 12.8389 50.1685 12.8389Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M54.5234 8.35697V6.91568H55.7871V4.82324H57.5634V6.91568H59.3725V8.35697H57.5634V11.7137C57.5634 12.3648 57.7162 12.8262 58.5125 12.8262C58.7525 12.8262 59.0743 12.7757 59.278 12.6746L59.3398 14.0905C59.0253 14.2107 58.538 14.2865 58.1398 14.2865C56.2253 14.2865 55.7871 13.1108 55.7871 11.7326V8.36328H54.5234V8.35697Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M65.0098 13.2118H64.9589C64.5989 13.8503 63.7461 14.3118 62.7152 14.3118C61.5516 14.3118 60.0098 13.7554 60.0098 12.0676C60.0098 9.91197 62.7152 9.61488 64.9789 9.61488V9.43786C64.9789 8.54654 64.2261 8.11035 63.3225 8.11035C62.557 8.11035 61.8189 8.47068 61.3552 8.93846L60.4207 7.83854C61.237 7.08626 62.3734 6.69434 63.4734 6.69434C66.0643 6.69434 66.6916 8.28735 66.6916 9.73497V14.1285H65.0025V13.2118H65.0098ZM64.9843 10.8412H64.5789C63.4352 10.8412 61.8243 10.9803 61.8243 12.0424C61.8243 12.7314 62.4752 12.9463 63.0879 12.9463C64.3261 12.9463 64.9898 12.2446 64.9898 11.0941V10.8412H64.9843Z"
+                  fill="#241C15"></path>
+                <path class="svg_text"
+                  d="M70.4546 10.2975L67.8492 6.91553H70.0164L71.5855 9.15966L73.1964 6.91553H75.2783L72.6855 10.2975L75.6383 14.1346H73.4437L71.5655 11.5049L69.6637 14.1346H67.5273L70.4601 10.2975H70.4546Z"
+                  fill="#241C15"></path>
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <div class="app-icon" style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 60%;
+            margin: auto;
+            align-items: center;
+            gap: var(--spacing-20);
+            padding-bottom: var(--spacing-xlarge);
+          ">
+        <div class="app">
+          <img width="115px" height="35"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/1u3hha7FE0Q402e2qsMu6a/5e403548149c1618b64034284f692ff1/icon-ios.svg?w=320&q=70"
+            alt="" />
+          <img width="115px" height="35px"
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/64EpnI4RsQI66c2y2O60G2/4c34d7bc4dd7a4362c7e19a06c109e21/icon-android.svg?w=320&q=70"
+            alt="" />
+        </div>
+        <div class="socials" style="
+              display: flex;
+              align-items: center;
+              gap: var(--spacing-20);
+              justify-content: center;
+            ">
+          <img
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/5daYAeMRSgIUUiSquGwsgI/c4f1bcaa7f06c0dbf66158331144eaf5/icon-facebook-21-20.svg?w=160&q=70"
+            alt="" />
+          <img
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/3VjJhbqftKuok6gqYuUQKy/b19aae83616891ee31ca7f801dcbb77d/icon-twitter-20-20.svg?w=320&q=70"
+            alt="" />
+          <img
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/RlNw7Xkw8uKYAUoYU4aQw/e6b336e1e536e5ffccdc1654448d3c79/icon-instagram-21-20.svg?w=160&q=70"
+            alt="" />
+          <img
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/n5saFR4miW4U4ygUIQo0A/f396bbf6610cc219e2e50a130010378c/icon-linkedin-20-20.svg?w=160&q=70"
+            alt="" />
+          <img
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/2z1ra9BrgQewIqMQckMasg/61893a8beccd98808e4f8083d5a19764/icon-youtube-29-20-White__1_.svg?w=160&q=70"
+            alt="" />
+          <img
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/7nawBEArBKpxRukK66OZtN/2f0650df51c47298c6612737af44f22d/pinterest-logo-20-20.svg?w=160&q=70"
+            alt="" />
+        </div>
+        <div class="icon-gdpr">
+          <img
+            src="https://mailchimp.com/ctf/images/yzco4xsimv0y/6oLFYTWGpTXooJs0SC0y9T/62dbdb92231183f56e68775904570953/EN.svg?w=1600&q=70"
+            alt="" />
+        </div>
+      </div>
+      <div class="footer-inner" style="
+            max-width: var(--max-width);
+            margin: auto;
+            display: flex;
+            gap: var(--spacing-40);
+            flex-wrap: var(--wrap);
+            justify-content: center;
+          ">
+        <div class="language-select">
+          <select style="
+                width: 196px;
+                height: 40px;
+                background: transparent;
+                border: 1px solid;
+              ">
+            <option>English</option>
+            <option>Español</option>
+            <option>Français</option>
+          </select>
+        </div>
+        <div class="footer-content">
+          <p class="footer-copy" style="font-size: var(--font-size-02); text-align: left">
+            ©2001–2025 All Rights Reserved. Mailchimp® is a registered
+            trademark of The Rocket Science Group. Apple and the Apple logo
+            are trademarks of Apple Inc. Mac App Store is a service mark of
+            Apple Inc. Google Play and the Google Play logo are trademarks of
+            Google Inc.
+
+            <a style="
+                  font-size: var(--font-size-02);
+                  color: var(--color-black);
+                " href="#">Privacy</a>
+            <a style="
+                  font-size: var(--font-size-02);
+                  color: var(--color-black);
+                " href="#">Terms</a>
+            <a style="
+                  font-size: var(--font-size-02);
+                  color: var(--color-black);
+                " href="#">Legal</a>
+            <a style="
+                  font-size: var(--font-size-02);
+                  color: var(--color-black);
+                " href="#">Cookie Preferences</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+</html>
